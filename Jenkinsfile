@@ -1,5 +1,11 @@
 pipeline {
-    agent { dockerfile true }
+    agent {
+        dockerfile {
+            filename 'dockerfile'
+            label 'zip-job-docker'
+            args '--privileged'
+        }
+    }
     stages {
         stage('Build') {
             steps {
