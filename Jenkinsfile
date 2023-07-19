@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'zip-job-docker'
-    }
+    agent any
     stages {
         stage ('execute repo test') {
             steps {
