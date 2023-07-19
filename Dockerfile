@@ -13,9 +13,4 @@ COPY zip_job.py /tmp
 RUN uname -m && cat /etc/os-release
 
 # Print to check if the py file is in the tmp folder 
-RUN if [ -f /tmp/zip_job.py ]; then echo "zip_job.py exists."; else echo "Couldn't find zip_job."; fi
-
-
-# Print the OS type and architecture, validate existence of zip_job.py
-# CMD [ "uname -m && uname -r && ls /tmp/zip_job.py" ]
-# CMD [ "python3 /tmp/zip_job.py" ]
+CMD uname -m && cat /etc/os-release && if [ -f /tmp/zip_job.py ]; then echo "zip_job.py exists."; else echo "Couldn't find zip_job."; fi
