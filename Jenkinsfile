@@ -1,9 +1,20 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+            label 'zip-job-docker'
+            args '--privileged'
+        }
+    }
     stages {
-        stage ('execute repo test') {
+        stage('Build') {
             steps {
-                echo "Allahu Akbar!!!"
+                sh 'python3 tmp/zip_job.py'
+            }
+        }
+        stage('Publish') {
+            steps {
+                sh 'curl -u user:password -T *.zip "http://your-artifactory-instance/artifactory/your-repo/"'
             }
         }
     }
