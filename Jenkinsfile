@@ -12,14 +12,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -la'
                 sh 'python3 zip_job.py'
-                sh 'cd /tmp'
-                sh 'ls'
-                sh 'cd txt'
-                sh 'ls'
-                sh 'cd ..'
-                sh 'cd zip'
                 sh 'ls -la'
-                sh 'pwd'
             }
         }
         stage('Publish') {
