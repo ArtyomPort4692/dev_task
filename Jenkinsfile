@@ -32,6 +32,7 @@ pipeline {
                     server.publishBuildInfo buildInfo
                 }
             }
+        }
         stage('Report') {
            steps {
             emailext (
@@ -43,6 +44,6 @@ pipeline {
         }
     }
 }
-}
+
 
     
