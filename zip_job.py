@@ -37,7 +37,7 @@ def delete_all_files():
 # Checking that files were successfully created
 def check_files_exist(folder, names_array):
     for name in names_array:
-        path = f"{folder}/{name}.txt" if folder == "txt" else f"zip/{name}_{version}.zip"
+        path = f"{folder}/{name}.txt" if folder == "txt" else f"{name}_{version}.zip"
         file_check = os.path.isfile(path)
         if file_check is False:
             return False
@@ -60,7 +60,7 @@ def create_zip_files(names_array):
     if (not os.path.exists("zip")):
         os.mkdir("zip")
     for name in names_array:
-        with zipfile.ZipFile(f"zip/{name}_{version}.zip", 'w') as zip_file:
+        with zipfile.ZipFile(f"{name}_{version}.zip", 'w') as zip_file:
 
             text_file_path = f"{name}.txt"
             zip_file_path = f"zip/{name}_{version}.zip" 
