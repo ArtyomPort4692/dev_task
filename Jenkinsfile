@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'python3 zip_job.py'
                 sh 'cd /tmp'
                 sh 'ls'
                 sh 'cd txt'
