@@ -15,7 +15,8 @@ pipeline {
                 sh 'ls'
                 sh 'cd ..'
                 sh 'cd zip'
-                sh 'cd ls'
+                sh 'ls -la'
+                sh 'pwd'
             }
         }
         stage('Publish') {
