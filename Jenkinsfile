@@ -11,11 +11,11 @@ pipeline {
                 sh 'python3 zip_job.py'
             }
         }
-        stage('Publish') {
-            steps {
-                sh 'curl -u user:password -T *.zip "http://your-artifactory-instance/artifactory/your-repo/"'
-            }
-        }
+        // stage('Publish') {
+        //     steps {
+        //         sh 'curl -u user:password -T *.zip "http://your-artifactory-instance/artifactory/your-repo/"'
+        //     }
+        // }
         stage('Report') {
            steps {
                script {
