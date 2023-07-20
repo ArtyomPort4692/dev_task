@@ -20,14 +20,14 @@ pipeline {
     post {
         success {
             emailext (
-                to: 'vitaliyusf@gmail.com',
+                to: 'testingjenkins76@gmail.com',
                 subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Succeeded",
                 body: "Check console output at ${env.BUILD_URL} to view the results."
             )
         }
         failure {
             emailext (
-                to: 'vitaliyusf@gmail.com',
+                to: 'testingjenkins76@gmail.com',
                 subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Failed",
                 body: "Check console output at ${env.BUILD_URL} to view the results."
             )
