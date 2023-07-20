@@ -9,11 +9,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python3 /tmp/zip_job.py'
-                sh 'ls /tmp/'
-                sh 'ls /tmp'
-                sh 'ls /tmp/txt'
-                sh 'ls /tmp/zip'
+                sh 'cd tmp'
+                sh 'python3 zip_job.py'
+                sh 'ls'
+                sh 'ls /txt'
+                sh 'ls /zip'
             }
         }
         stage('Publish') {
