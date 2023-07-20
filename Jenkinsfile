@@ -11,8 +11,11 @@ pipeline {
             steps {
                 sh 'cd /tmp'
                 sh 'ls'
-                sh 'ls /txt'
-                sh 'ls /zip'
+                sh 'cd /txt'
+                sh 'ls'
+                sh 'cd ../'
+                sh 'cd /zip'
+                sh 'cd ls'
             }
         }
         stage('Publish') {
