@@ -11,11 +11,32 @@ pipeline {
                 sh 'python3 zip_job.py'
             }
         }
-        // stage('Publish') {
-        //     steps {
-        //         sh 'curl -u user:password -T *.zip "http://your-artifactory-instance/artifactory/your-repo/"'
-        //     }
-        // }
+        stage('Publish') {
+            steps {
+                sh 'curl -u super-user:Qw12856! -T *.zip "https://artifactory-tlv/artifactory/generic-local/binary-storage/test'
+            }
+        }
+//         stage('Publish') {
+//             steps {
+//                 script {
+//                     def server = Artifactory.server '<jfrog>'
+//                     def uploadSpec = """{
+//                         "files": [
+//                             {
+//                                 "pattern": "*.zip",
+//                                 "target": "your-repository-name/path/to/store/artifacts/"
+//                             }
+//                         ]
+//                     }"""
+                    
+//                     def buildInfo = Artifactory.newBuildInfo()
+//                     server.upload spec: uploadSpec, buildInfo: buildInfo
+                    
+//                     // Publish the build info to Artifactory
+//                     server.publishBuildInfo buildInfo
+//                 }
+//             }
+// }
         stage('Report') {
            steps {
             emailext (
