@@ -18,17 +18,11 @@ pipeline {
         // }
         stage('Report') {
            steps {
-               script {
-                   def mailRecipients = 'vitaliyusf@gmail.com'
-                   def jobName = currentBuild.fullDisplayName
-                   //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-                   emailext body: '''Hello''',
-                       mimeTye: 'text/html',
-                       subject: "[Jenkins] Finished ${jobName}",
-                       to: "${mailRecipients}",
-                       replyTo: "${mailRecipients}",
-                       recipientProviders: [[$class: 'CulpritsRecipientProvider']]
-        }
+            emailext (
+                to: 'test@gmail.com',
+                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Failed",
+                body: "Check console output at ${env.BUILD_URL} to view the results."
+            )
     }
 }
     }
