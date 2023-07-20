@@ -36,8 +36,8 @@ pipeline {
            steps {
             emailext (
                 to: 'vitaliyusf@gmail.com',
-                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Failed",
-                body: "Check console output at ${env.BUILD_URL} to view the results."
+                subject: "Job  Failed",
+                body: "Check console output at  to view the results."
             )
     }
 }
@@ -46,15 +46,15 @@ pipeline {
         success {
             emailext (
                 to: 'vitaliyusf@gmail.com',
-                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Succeeded",
-                body: "Check console output at ${env.BUILD_URL} to view the results."
+                subject: "Job Succeeded",
+                body: "Check console output at  to view the results."
             )
         }
         failure {
             emailext (
                 to: 'vitaliyusf@gmail.com',
-                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) Failed",
-                body: "Check console output at ${env.BUILD_URL} to view the results."
+                subject: "Job  Failed",
+                body: "Check console output at to view the results."
             )
         }
     }
