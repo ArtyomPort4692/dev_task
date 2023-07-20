@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            filename 'Dockerfile'
+            filename 'dockerfile'
             label 'zip-job-docker'
             args '--privileged'
         }
@@ -10,6 +10,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'python3 /tmp/zip_job.py'
+                sh 'ls /tmp/'
+                sh 'ls /tmp'
+                sh 'ls /tmp/txt'
+                sh 'ls /tmp/zip'
             }
         }
         stage('Publish') {
