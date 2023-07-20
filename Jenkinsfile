@@ -9,6 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'pwd'
+                sh 'ls -la'
                 sh 'cd /tmp'
                 sh 'ls'
                 sh 'cd txt'
