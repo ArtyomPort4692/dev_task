@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd tmp'
+                sh 'cd /tmp'
                 sh 'python3 zip_job.py'
                 sh 'ls'
                 sh 'ls /txt'
