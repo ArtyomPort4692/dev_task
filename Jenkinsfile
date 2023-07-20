@@ -11,32 +11,32 @@ pipeline {
                 sh 'python3 zip_job.py'
             }
         }
+        // stage('Publish') {
+        //     steps {
+        //         sh 'curl -u super-user:Qw12856! -T *.zip "https://artifactory-tlv/artifactory/generic-local/binary-storage/test'
+        //     }
+        // }
         stage('Publish') {
             steps {
-                sh 'curl -u super-user:Qw12856! -T *.zip "https://artifactory-tlv/artifactory/generic-local/binary-storage/test'
+                script {
+                    def server = Artifactory.server '<jfrog>'
+                    def uploadSpec = """{
+                        "files": [
+                            {
+                                "pattern": "*.zip",
+                                "target": "generic-local"
+                            }
+                        ]
+                    }"""
+                    
+                    def buildInfo = "1.2.0"
+                    server.upload spec: uploadSpec, buildInfo: buildInfo
+                    
+                    // Publish the build info to Artifactory
+                    server.publishBuildInfo buildInfo
+                }
             }
-        }
-//         stage('Publish') {
-//             steps {
-//                 script {
-//                     def server = Artifactory.server '<jfrog>'
-//                     def uploadSpec = """{
-//                         "files": [
-//                             {
-//                                 "pattern": "*.zip",
-//                                 "target": "your-repository-name/path/to/store/artifacts/"
-//                             }
-//                         ]
-//                     }"""
-                    
-//                     def buildInfo = Artifactory.newBuildInfo()
-//                     server.upload spec: uploadSpec, buildInfo: buildInfo
-                    
-//                     // Publish the build info to Artifactory
-//                     server.publishBuildInfo buildInfo
-//                 }
-//             }
-// }
+}
         stage('Report') {
            steps {
             emailext (
