@@ -32,32 +32,17 @@ pipeline {
                     server.publishBuildInfo buildInfo
                 }
             }
-}
         stage('Report') {
            steps {
             emailext (
                 to: 'vitaliyusf@gmail.com',
-                subject: "Job  Failed",
-                body: "Check console output at  to view the results."
+                subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) status",
+                body: "Check console output at ${env.BUILD_URL} to view the results."
             )
-    }
-}
-    }
-    post {
-        success {
-            emailext (
-                to: 'vitaliyusf@gmail.com',
-                subject: "Job Succeeded",
-                body: "Check console output at  to view the results."
-            )
-        }
-        failure {
-            emailext (
-                to: 'vitaliyusf@gmail.com',
-                subject: "Job  Failed",
-                body: "Check console output at to view the results."
-            )
+            }
         }
     }
 }
-        
+}
+
+    
