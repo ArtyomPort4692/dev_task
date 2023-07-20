@@ -11,10 +11,10 @@ pipeline {
             steps {
                 sh 'cd /tmp'
                 sh 'ls'
-                sh 'cd /txt'
+                sh 'cd txt'
                 sh 'ls'
-                sh 'cd ../'
-                sh 'cd /zip'
+                sh 'cd ..'
+                sh 'cd zip'
                 sh 'cd ls'
             }
         }
