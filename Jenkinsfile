@@ -2,6 +2,7 @@ pipeline {
     agent {
         dockerfile {
             filename 'Dockerfile'
+            label 'zip-job-docker'
             args '--privileged'
         }
     }
