@@ -1,16 +1,13 @@
 pipeline {
     agent {
-        dockerfile true
+        dockerfile {
+            filename 'dockerfile'
+            label 'zip-job-docker'
+            args '--privileged'
+        }
     }
     stages {
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    docker.image('my-python-app').run('--privileged --label=zip-job-docker')
-                }
-            }
-        }
-           stage('Build') {
+        stage('Build') {
             steps {
                 sh 'python3 tmp/zip_job.py'
             }
@@ -22,4 +19,3 @@ pipeline {
         }
     }
 }
-Ï
