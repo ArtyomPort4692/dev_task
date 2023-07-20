@@ -11,11 +11,6 @@ pipeline {
                 sh 'python3 zip_job.py'
             }
         }
-        // stage('Publish') {
-        //     steps {
-        //         sh 'curl -u super-user:Qw12856! -T *.zip "https://artifactory-tlv/artifactory/generic-local/binary-storage/test'
-        //     }
-        // }
         stage('Publish') {
             steps {
                 script {
