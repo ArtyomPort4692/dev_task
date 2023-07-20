@@ -1,18 +1,20 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'Dockerfile'
-            label 'zip-job-docker'
-            args '--privileged'
-        }
-    }
+    agent none
     stages {
         stage('Build') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    label 'zip-job-docker'
+                    args '--privileged'
+        }
+            }
             steps {
                 sh 'python3 zip_job.py'
             }
         }
         stage('Publish') {
+            agent any
             steps {
                 script {
                     def server = Artifactory.server '<jfrog>'
@@ -34,6 +36,7 @@ pipeline {
             }
         }
         stage('Report') {
+            agent any
            steps {
             emailext (
                 to: 'vitaliyusf@gmail.com',
